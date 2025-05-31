@@ -27,3 +27,8 @@ body {
   background: #495057;
 }
 
+.img {
+  max-width: 75%;
+  max-height: 100%;
+  object-fit: cover;
+}
