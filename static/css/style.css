@@ -1,0 +1,23 @@
+body {
+    overflow-y: hidden;
+}
+
+#scroll {
+    overflow-y: scroll;
+    height: 25rem;
+}
+
+.scrollbox::-webkit-scrollbar {
+  width: 8px;
+}
+.scrollbox::-webkit-scrollbar-track {
+  background: #e9ecef;
+  border-radius: 4px;
+}
+.scrollbox::-webkit-scrollbar-thumb {
+  background: #6c757d;
+  border-radius: 4px;
+}
+.scrollbox::-webkit-scrollbar-thumb:hover {
+  background: #495057;
+}
