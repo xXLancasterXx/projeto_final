@@ -1,5 +1,10 @@
 body {
-    overflow-y: hidden;
+    background-color: #fdf6e3;
+}
+
+.sobre, .contato {
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 #scroll {
@@ -21,3 +26,4 @@ body {
 .scrollbox::-webkit-scrollbar-thumb:hover {
   background: #495057;
 }
+

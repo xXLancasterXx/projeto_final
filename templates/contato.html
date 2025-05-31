@@ -5,10 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contato</title>
 </head>
-<body>
+<body class="contato">
     {% extends "base.html" %}
 
     {% block content %}
+        <div class="contato container mt-3">
+            <h3 class="text-center">Para entrar em contato, preencha as informações abaixo</h3>
+        </div>
+
+        <div class="container py-5">
+            <div class="row justify-content-evenly align-items-start mt-0 mh-70">
+                <div class="col-md-5 text-center mb-5 mb-md-0 ">
+                    <img src="{{ url_for('static', filename='img/pergaminho.png') }}" class="vh-100" alt="Ave">
+                </div>
+
+                <div class="col-md-6 bg-light p-4 rounded shadow" style="border: 3px solid #d4a373;">
+                    <h3 class="mb-4 text-center">📜 Formulário de Contato</h3>
+                    <form action="#" method="post">
+                        <div class="mb-3">
+                            <label for="nomeContato" class="form-label">Contratante</label>
+                            <input type="text" class="form-control" id="nomeContato" placeholder="Digite seu nome">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Ponto de contato</label>
+                            <input type="email" class="form-control" id="email" placeholder="Digite seu email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="mensagem" class="form-label">Conteúdo</label>
+                            <textarea name="mensagem" id="mensagem" class="form-control" rows="4" placeholder="Conteúdo da mensagem encantada..."></textarea>
+                        </div>
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-primary">✉️ Enviar Pergaminho</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
         
     {% endblock %}
 </body>
