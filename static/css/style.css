@@ -36,3 +36,40 @@ body {
 .hud {
   max-width: 50%;
 }
+
+.hud-info {
+  margin-top: 0rem;
+  margin-bottom: 0;
+}
+
+.life {
+  width: 30%;
+}
+
+.map {
+  max-width: 40%;
+}
+
+.carta {
+  background-color: #f5e4c3;
+  border: 2px solid #d2b48c;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.carta:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s;
+}
+
+.titulo {
+  width: 100%;
+  color: black;
+  font-weight: bold;
+  text-shadow:
+    -1px -1px 0 white,
+     1px -1px 0 white,
+    -1px  1px 0 white,
+     1px  1px 0 white;
+}
+
