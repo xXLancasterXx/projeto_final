@@ -1,14 +1,8 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contato</title>
-</head>
-<body class="contato">
-    {% extends "base.html" %}
+{% extends "base.html" %}
+{% block title %}Contato{% endblock %}
 
-    {% block content %}
+{% block content %}
+    <div class="contato">
         <div class="contato container mt-3">
             <h3 class="text-center">Para entrar em contato, preencha as informações abaixo</h3>
         </div>
@@ -41,7 +35,5 @@
                 </div>
             </div>
         </div>
-        
-    {% endblock %}
-</body>
-</html>
+    </div>
+{% endblock %}

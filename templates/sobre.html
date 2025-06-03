@@ -1,69 +1,60 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre</title>
-</head>
-<body class="sobre">
-    {% extends 'base.html' %}
+{% extends 'base.html' %}
+{% block title %}Sobre{% endblock %}
 {% block content %}
-<div class="container mt-4">
-  <div class="row">
-    <!-- Perfil com imagem -->
-    <div class="col-md-4 text-center" id="perfil">
-      <img src="{{ url_for('static', filename='img/foto.png') }}" alt="Imagem de Perfil" class="img-fluid rounded-circle shadow mb-3" style="width: 200px;">
-      <h3 class="mt-2">Pedro Vasconcelos</h3> <br>
-      <div class="container-sm p-3 border border-2 rounded scrollbox" id="scroll">
-        <h4 id="scrollspyHeading1">História</h4>
-        <p class="text-start">Pedro Vasconcelos tem 20 anos e está atualmente no 7º período do curso de Licenciatura em Informática. Desde o início da graduação, desenvolveu um grande interesse por programação, com foco especial no desenvolvimento de sites e aplicações web.</p>
-        <p class="text-start">Ao longo de sua formação, Pedro tem se aprofundado em linguagens como HTML, CSS, JavaScript e Python, utilizando frameworks como Flask para criar aplicações dinâmicas. Apesar de ainda não ter trabalhado com aplicativos móveis, demonstra entusiasmo constante em aprender novas tecnologias e expandir suas habilidades técnicas.</p>
-        <p class="text-start">Além do conhecimento técnico, Pedro também valoriza os aspectos pedagógicos da licenciatura, buscando formas de integrar a tecnologia ao processo de ensino-aprendizagem. Sua trajetória acadêmica reflete um equilíbrio entre prática e teoria, com participação em projetos que visam aproximar a informática da educação básica.</p>
-        <p class="text-start">Motivado por desafios e apaixonado por criar soluções úteis, Pedro pretende seguir carreira como educador e desenvolvedor, contribuindo para uma educação mais interativa, acessível e alinhada com as demandas da era digital.</p>
-      </div>
-    </div>
+  <div class="sobre">
+    <div class="container mt-4">
+      <div class="row">
+        <div class="col-md-4 text-center" id="perfil">
+          <img src="{{ url_for('static', filename='img/foto.png') }}" alt="Imagem de Perfil" class="img-fluid rounded-circle shadow mb-3" style="width: 200px;">
+          <h3 class="mt-2">Pedro Vasconcelos</h3> <br>
+          <div class="container-sm p-3 border border-2 rounded scrollbox" id="scroll">
+            <h4 id="scrollspyHeading1">História</h4>
+            <p class="text-start">Pedro Vasconcelos tem 20 anos e está atualmente no 7º período do curso de Licenciatura em Informática. Desde o início da graduação, desenvolveu um grande interesse por programação, com foco especial no desenvolvimento de sites e aplicações web.</p>
+            <p class="text-start">Ao longo de sua formação, Pedro tem se aprofundado em linguagens como HTML, CSS, JavaScript e Python, utilizando frameworks como Flask para criar aplicações dinâmicas. Apesar de ainda não ter trabalhado com aplicativos móveis, demonstra entusiasmo constante em aprender novas tecnologias e expandir suas habilidades técnicas.</p>
+            <p class="text-start">Além do conhecimento técnico, Pedro também valoriza os aspectos pedagógicos da licenciatura, buscando formas de integrar a tecnologia ao processo de ensino-aprendizagem. Sua trajetória acadêmica reflete um equilíbrio entre prática e teoria, com participação em projetos que visam aproximar a informática da educação básica.</p>
+            <p class="text-start">Motivado por desafios e apaixonado por criar soluções úteis, Pedro pretende seguir carreira como educador e desenvolvedor, contribuindo para uma educação mais interativa, acessível e alinhada com as demandas da era digital.</p>
+          </div>
+        </div>
 
-    <!-- Informações em estilo ficha -->
-    <div class="col-md-8 mh-100">
-      <div class="card mb-2">
-        <div class="card-header bg-dark text-white">Dados Básicos</div>
-        <div class="card-body">
-          <p><strong>Idade:</strong> 20 anos</p>
-          <p><strong>Período:</strong> 7º</p>
-          <p><strong>Curso:</strong> Licenciatura em Informática</p>
-          <p><strong>Inventário</strong> VS Code, Github</p>
-        </div>
-      </div>
-      <div class="card mb-2">
-        <div class="card-header bg-warning text-dark">Perfil</div>
-        <div class="card-body">
-          <p><strong>Classe:</strong> Licenciando</p>
-          <p><strong>Equipamento:</strong> Café, Computador</p>
-          <p><strong>Estilo:</strong> Troca horas de sono por programação</p>
-        </div>
-      </div>
+        <div class="col-md-8 mh-100">
+          <div class="card mb-2">
+            <div class="card-header bg-dark text-white">Dados Básicos</div>
+            <div class="card-body">
+              <p><strong>Idade:</strong> 20 anos</p>
+              <p><strong>Período:</strong> 7º</p>
+              <p><strong>Curso:</strong> Licenciatura em Informática</p>
+              <p><strong>Inventário</strong> VS Code, Github</p>
+            </div>
+          </div>
+          <div class="card mb-2">
+            <div class="card-header bg-warning text-dark">Perfil</div>
+            <div class="card-body">
+              <p><strong>Classe:</strong> Licenciando</p>
+              <p><strong>Equipamento:</strong> Café, Computador</p>
+              <p><strong>Estilo:</strong> Troca horas de sono por programação</p>
+            </div>
+          </div>
 
-      <div class="card mb-2">
-        <div class="card-header bg-primary text-white">Habilidades</div>
-        <div class="card-body">
-          <ul>
-            <li>HTML, CSS, JavaScript</li>
-            <li>Python</li>
-            <li>Flask (Aprendendo)</li>
-          </ul>
-        </div>
-      </div>
+          <div class="card mb-2">
+            <div class="card-header bg-primary text-white">Habilidades</div>
+            <div class="card-body">
+              <ul>
+                <li>HTML, CSS, JavaScript</li>
+                <li>Python</li>
+                <li>Flask (Aprendendo)</li>
+              </ul>
+            </div>
+          </div>
 
-      <div class="card mb-2">
-        <div class="card-header bg-success text-white">Interesses</div>
-        <div class="card-body">
-          <p>Desenvolvimento web, integração de tecnologia na educação, robótica educacional.</p>
+          <div class="card mb-2">
+            <div class="card-header bg-success text-white">Interesses</div>
+            <div class="card-body">
+              <p>Desenvolvimento web, integração de tecnologia na educação, robótica educacional.</p>
+            </div>
+          </div>
+          </div>
         </div>
-      </div>
       </div>
     </div>
   </div>
-</div>
 {% endblock %}
-</body>
-</html>
