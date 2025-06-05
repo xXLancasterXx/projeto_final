@@ -2,20 +2,40 @@
 
 {% block title %}Projetos{% endblock %}
 {% block content %}
-    <div class="container-lg inv d-flex flex-column align-items-center justify-content-center">
-        <div class="row d-flex justify-content-center mb-4">
-            <h3 class="w-75 text-center">CRM</h3>
-            <p class="w-75 text-center">Projeto Inacabado por motivos de falta de tempo, dinheiro, vontade e planejamento.</p>            
+    <div class="container-fluid w-100 d-flex flex-row justify-content-center align-items-center inv">
+        <div class="card cartas border-0 mx-auto">
+            <h3 class="w-100 text-center card-title projeto">CRM</h3>
+            <div class="text-center card-body corpo">
+                <p class="w-75 text-center">Projeto Inacabado por motivos de falta de tempo, dinheiro, vontade e planejamento.</p>
+            </div>
         </div>
-        <div class="row d-flex justify-content-center items mt-4">
-            <div class="item col d-flex justify-content-start flex-column">
-                <h3 class="w-75 text-center">ChatBot</h3>
+        <div class="card cartas border-0 mx-auto">
+            <h3 class="w-100 text-center card-title projeto">ChatBot</h3>
+            <div class="text-center card-body corpo">
                 <p class="w-75 text-center">Projeto menor que esta com sua versão MVP quase pronta.</p>
             </div>
-            <div class="item col d-flex text-end flex-column">
-                <h3 class="w-75 text-center">Projeto Dev. Web</h3>
+        </div>
+        <div class="card cartas border-0 mx-auto">
+            <h3 class="text-center card-title projeto">Projeto Dev. Web</h3>
+            <div class="text-center card-body corpo">
                 <p class="w-75 text-center">Projeto Final da Materia de Dev. Web que precisa dos requisitos para começar.</p>
             </div>
         </div>
     </div>
+    <audio id="scrollSound" src="{{ url_for('static', filename='snd/papel.mp3') }}"></audio>
+{% endblock %}
+{% block script %}
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.cartas');
+            const scrollSound = document.getElementById('scrollSound');
+    
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                scrollSound.currentTime = 1;
+                scrollSound.play();
+                });
+            });
+        });
+    </script>
 {% endblock %}

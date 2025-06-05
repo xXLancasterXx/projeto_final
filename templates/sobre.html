@@ -2,12 +2,12 @@
 {% block title %}Sobre{% endblock %}
 {% block content %}
   <div class="sobre">
-    <div class="container mt-4">
+    <div class="container mt-3">
       <div class="row">
         <div class="col-md-4 text-center" id="perfil">
           <img src="{{ url_for('static', filename='img/foto.png') }}" alt="Imagem de Perfil" class="img-fluid rounded-circle shadow mb-3" style="width: 200px;">
           <h3 class="mt-2">Pedro Vasconcelos</h3> <br>
-          <div class="container-sm p-3 border border-2 rounded scrollbox" id="scroll">
+          <div class="container-sm p-3 border border-2 rounded scrollbox hist" id="scroll">
             <h4 id="scrollspyHeading1">História</h4>
             <p class="text-start">Pedro Vasconcelos tem 20 anos e está atualmente no 7º período do curso de Licenciatura em Informática. Desde o início da graduação, desenvolveu um grande interesse por programação, com foco especial no desenvolvimento de sites e aplicações web.</p>
             <p class="text-start">Ao longo de sua formação, Pedro tem se aprofundado em linguagens como HTML, CSS, JavaScript e Python, utilizando frameworks como Flask para criar aplicações dinâmicas. Apesar de ainda não ter trabalhado com aplicativos móveis, demonstra entusiasmo constante em aprender novas tecnologias e expandir suas habilidades técnicas.</p>
@@ -57,4 +57,13 @@
       </div>
     </div>
   </div>
+  <audio id="bgMusic" src="{{ url_for('static', filename='snd/background.mp3') }}" autoplay loop></audio>
+{% endblock %}
+{% block script %}
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const bgMusic = document.getElementById('bgMusic');
+      bgMusic.volume = 0.3; // Ajuste o volume conforme necessário
+    });
+  </script>
 {% endblock %}
