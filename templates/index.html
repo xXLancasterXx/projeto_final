@@ -43,7 +43,7 @@
                 <p class="card-text text-center">Ao usar, adia todas as missões por 1 turno. Recupera leveza mental, mas reduz a produtividade.</p>
             </div>
         </div>
-        <div class="card d-flex justify-content-center flex-column carta" style="width: 20rem;">
+        <div class="card d-flex justify-content-center flex-column carta" id="triste" style="width: 20rem;">
             <h3 class="card-title text-center position-absolute top-0 start-50 translate-middle mt-3 titulo">Trancar o curso</h3>
             <img class="card-img-top rounded row-2 mx-1" src="{{ url_for('static', filename='img/card3.png') }}" alt="Ex3">
             <div class="card-body row-1">
@@ -52,5 +52,19 @@
         </div>
     </div>
 
-        
+    <audio id="quit" src="{{ url_for('static', filename='snd/elegebete.mp3') }}"></audio>
+{% endblock %}
+{% block script %}
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const triste = document.getElementById('triste');
+            const quitSound = document.getElementById('quit');
+
+            triste.addEventListener('mouseenter', () => {
+                quitSound.currentTime = 0;
+                quitSound.volume = 1;
+                quitSound.play();
+            });
+        });
+    </script>
 {% endblock %}
