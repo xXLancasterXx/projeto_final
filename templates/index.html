@@ -53,16 +53,28 @@
     </div>
 
     <audio id="quit" src="{{ url_for('static', filename='snd/elegebete.mp3') }}"></audio>
+    <audio id="whatsapp" src="{{ url_for('static', filename='snd/whatsapp.mp3') }}"></audio>
+
 {% endblock %}
 {% block script %}
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const triste = document.getElementById('triste');
             const quitSound = document.getElementById('quit');
+            const whatsappSound = document.getElementById('whatsapp');
 
-            triste.addEventListener('mouseenter', () => {
+            // Segunda carta (Procrastinação)
+            const segundaCarta = document.querySelectorAll('.carta')[1];
+            segundaCarta.addEventListener('mouseenter', () => {
+                whatsappSound.currentTime = 0;
+                whatsappSound.volume = 1;
+                whatsappSound.play();
+            });
+
+            // Terceira carta (Trancar o curso)
+            const terceiraCarta = document.querySelectorAll('.carta')[2];
+            terceiraCarta.addEventListener('mouseenter', () => {
                 quitSound.currentTime = 0;
-                quitSound.volume = 1;
+                quitSound.volume = 0.6;
                 quitSound.play();
             });
         });
