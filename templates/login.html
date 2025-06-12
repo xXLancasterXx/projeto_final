@@ -1,10 +1,13 @@
-{$ extends "base.html" $}
+{% extends "base.html" %}
 
 {% block title %}Login{% endblock %}
 
+{% block nav %}
+{% endblock %}
+
 {% block content %}
     <div class="container-lg mesa">
-        <div class="container-fluid login">
+        <div class="container-fluid login d-flex justify-content-center align-items-center">
             <form>
                 <div class="mb-3">
                   <label for="nomeUsuario" class="form-label">Username</label>
