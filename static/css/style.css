@@ -138,3 +138,21 @@ body {
     max-height: 100%;
   }
 }
+
+
+
+/* TELA LOGIN */
+
+.mesa {
+  background-image: url('/static/img/mesa.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login {
+  background-color: aqua;
+}
