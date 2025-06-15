@@ -6,18 +6,18 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container-lg mesa">
+    <div class="mesa">
         <div class="container-fluid login d-flex justify-content-center align-items-center">
-            <form>
+            <form class="formulario" action="/home" method="post">
                 <div class="mb-3">
-                  <label for="nomeUsuario" class="form-label">Username</label>
+                  <label for="nomeUsuario" class="form-label">Username:</label>
                   <input type="text" class="form-control" id="nomeUsuario" aria-describedby="nameHelp" maxlength="30">
                 </div>
                 <div class="mb-3">
-                  <label for="exampleInputPassword1" class="form-label">Password</label>
+                  <label for="exampleInputPassword1" class="form-label">Password:</label>
                   <input type="password" class="form-control" id="exampleInputPassword1" minlength="8" maxlength="20">
                 </div>
-                <button type="submit" class="btn btn-primary">Iniciar Aventura</button>
+                <button type="submit" class="btn btn-primary entrar">Iniciar Aventura</button>
               </form>
         </div>      
     </div>
