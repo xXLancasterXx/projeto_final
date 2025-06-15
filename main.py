@@ -1,7 +1,17 @@
 from flask import Flask, render_template, request
+from flask_migrate import Migrate
+from database import db
+from usuarios import Usuario
+from fichas import Fichas
 
 app = Flask(__name__)
 
+app.config['SECRET_KEY'] = 'elegebete'
+conexao = 'sqlite:///banco.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = conexao
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db.init_app(app)
+migrate = Migrate(app, db)
 
 @app.route('/')
 def index():

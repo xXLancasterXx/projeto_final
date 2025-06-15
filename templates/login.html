@@ -8,18 +8,20 @@
 {% block content %}
     <div class="mesa">
         <div class="container-fluid login d-flex justify-content-center align-items-center">
-            <form class="formulario" action="/home" method="post">
+            <form class="formulario" action="/inicio" method="post">
                 <div class="mb-3">
                   <label for="nomeUsuario" class="form-label">Username:</label>
-                  <input type="text" class="form-control" id="nomeUsuario" aria-describedby="nameHelp" maxlength="30">
+                  <input type="text" class="form-control w-100" id="nomeUsuario" aria-describedby="nameHelp" maxlength="30">
                 </div>
                 <div class="mb-3">
                   <label for="exampleInputPassword1" class="form-label">Password:</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1" minlength="8" maxlength="20">
+                  <input type="password" class="form-control w-100" id="exampleInputPassword1" minlength="8" maxlength="20">
                 </div>
-                <button type="submit" class="btn btn-primary entrar">Iniciar Aventura</button>
+                <div class="w-100 d-flex justify-content-center">
+                  <button type="submit" class="btn btn-primary entrar">Iniciar Aventura</button>
+                </div>
               </form>
-        </div>      
+        </div>
     </div>
 {% endblock %}
 
