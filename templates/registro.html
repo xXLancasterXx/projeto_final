@@ -8,7 +8,7 @@
 {% block content %}
     <div class="mesa">
         <div class="container-fluid login d-flex flex-column justify-content-center align-items-center">
-            <form class="formulario" action="{{ url_for('login') }}" method="post">
+            <form class="formulario" action="{{ url_for('register') }}" method="post">
                 <div class="mb-3">
                   <label for="nomeUsuario" class="form-label">Username:</label>
                   <input type="text" name="nomeUsuario" class="form-control w-100" id="nomeUsuario" aria-describedby="nameHelp" maxlength="30">
@@ -18,13 +18,13 @@
                   <input type="password" name="password" class="form-control w-100" id="exampleInputPassword1" minlength="8" maxlength="20">
                 </div>
                 <div class="w-100 d-flex justify-content-center">
-                  <button type="submit" class="btn btn-primary entrar mt-2">Iniciar Aventura</button>
+                  <button type="submit" class="btn btn-primary entrar mt-2">Registrar-se</button>
                 </div>
               </form>
               <div class="w-100 d-flex justify-content-center mt-3">
-                  <p class="text-center mt-3">Ainda não tem uma conta? <a href="/registro">Registe-se</a></p>
+                  <p class="text-center mt-3">Já tem uma conta? <a href="/">Inicie sessão</a></p>
               </div>
-        </div>
+            </div>
     </div>
 {% endblock %}
 

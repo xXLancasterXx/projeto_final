@@ -1,4 +1,4 @@
-from database import db
+from utils import db
 
 class Usuario(db.Model):
     __tablename__ = 'usuarios'
@@ -9,3 +9,6 @@ class Usuario(db.Model):
     def __init__(self, userName, password):
         self.userName = userName
         self.password = password
+
+    def __repr__(self):
+        return "<Usuario {}>".format(self.userName)

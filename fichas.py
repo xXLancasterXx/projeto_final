@@ -1,4 +1,4 @@
-from database import db
+from utils import db
 
 class Fichas(db.Model):
     __tablename__ = 'fichas'
