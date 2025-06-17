@@ -42,7 +42,8 @@ def contato():
     return render_template('contato.html')
 
 
-
+#----------------------------------------------------------------------------------------------
+asdasd 
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
