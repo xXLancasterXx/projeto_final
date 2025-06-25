@@ -58,7 +58,7 @@ def register():
             db.session.add(user)
             db.session.commit()
             flash('Usuário registrado com sucesso!')
-            return render_template('login.html')
+            return redirect('/')
 
 @app.route('/sobre')
 def sobre():
