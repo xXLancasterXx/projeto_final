@@ -8,10 +8,16 @@ import os
 
 app = Flask(__name__)
 
-# conexao = f"mysql+pymysql://{db_usuario}:{db_senha}@{db_host}/{db_mydb}"
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+db_usuario = os.getenv('DB_USERNAME')
+db_senha = os.getenv('DB_PASSWORD')
+db_host = os.getenv('DB_HOST')
+db_mydb = os.getenv('DB_DATABASE')
+
 conexao = 'sqlite:///db.sqlite3' 
 
 app.config['SQLALCHEMY_DATABASE_URI'] = conexao
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 migrate = Migrate(app, db)
 
@@ -30,7 +36,7 @@ def login():
             return render_template('index.html', username=username)
         else:
             flash('Usuário ou senha inválidos.')
-            return redirect('/login')
+            return redirect('/')
 
 @app.route('/registro')
 def registro():
