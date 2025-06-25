@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+from flask import redirect, flash
 from flask_migrate import Migrate
 from utils import db
 from usuarios import Usuario
@@ -7,17 +8,10 @@ import os
 
 app = Flask(__name__)
 
-app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
-db_usuario = os.getenv('DB_USERNAME')
-db_senha = os.getenv('DB_PASSWORD')
-db_host = os.getenv('DB_HOST')
-db_mydb = os.getenv('DB_DATABASE')
-
 # conexao = f"mysql+pymysql://{db_usuario}:{db_senha}@{db_host}/{db_mydb}"
 conexao = 'sqlite:///db.sqlite3' 
 
 app.config['SQLALCHEMY_DATABASE_URI'] = conexao
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 migrate = Migrate(app, db)
 
@@ -34,6 +28,9 @@ def login():
         
         if Usuario.query.filter_by(userName=username, password=password).first():
             return render_template('index.html', username=username)
+        else:
+            flash('Usuário ou senha inválidos.')
+            return redirect('/login')
 
 @app.route('/registro')
 def registro():
@@ -48,12 +45,13 @@ def register():
         print(f"Senha: {password}")
         
         if Usuario.query.filter_by(userName=username).first():
-            return render_template('registro.html', error='Usuário já existe.')
+            flash('Usuário já existe.')
+            return redirect('/registro')
         else:
-            
             user = Usuario(userName=username, password=password)
             db.session.add(user)
             db.session.commit()
+            flash('Usuário registrado com sucesso!')
             return render_template('login.html')
 
 @app.route('/sobre')
