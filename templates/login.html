@@ -6,8 +6,16 @@
 {% endblock %}
 
 {% block content %}
-    <div class="mesa">
-        <div class="container-fluid login d-flex flex-column justify-content-center align-items-center">
+<div class="mesa">
+  <div class="container-fluid login d-flex flex-column justify-content-center align-items-center">
+            {% set mensagens = get_flashed_messages() %}
+            {% if mensagens %}
+                <div class="alert alert-danger" role="alert">
+                    {% for msg in mensagens %}
+                        {{ msg }}<br>
+                    {% endfor %}
+                </div>
+            {% endif %}
             <form class="formulario" action="{{ url_for('login') }}" method="post">
                 <div class="mb-3">
                   <label for="nomeUsuario" class="form-label">Username:</label>
@@ -29,4 +37,14 @@
 {% endblock %}
 
 {% block script %}
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const timeout = 2000;
+    const alert = document.querySelector('.alert');
+    if (alert) {
+      setTimeout(() => {
+        alert.style.display = 'none';
+      }, timeout);
+    }});
+</script>
 {% endblock %}
