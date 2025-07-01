@@ -193,3 +193,32 @@ body {
 }
 
 /* TESTAR SOMBRA PARA O BACKGROUND DO PERGAMINHO */
+
+
+.lateral {
+  background-image: url("/static/img/pg_lateral.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  min-width: 95px;
+}
+
+.lateral_content {
+  background-image: url('/static/img/lateral.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  max-width: 450px;
+}
+
+.persona {
+  background-image: url('/static/img/persona-.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  height: 35%;
+  width: 50%;
+}

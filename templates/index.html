@@ -2,17 +2,53 @@
 {% block title %}Início{% endblock %}
 {% block nav %}{% endblock %}
 
-{% block content %}
-    <div class="mesa d-flex flex-row justify-content-start align-items-center">
-        <div class="h-100 w-75">
 
-        </div>
-        <div class="container-fluid d-flex flex-column justify-content-center align-items-center personagens">
-            <div class="container-sm d-flex flex-column justify-content-center align-items-center adicionar">
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Offcanvas with body scrolling</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <p>Try scrolling the rest of the page to see this option in action.</p>
+  </div>
+</div>
+
+{% block content %}
+    <div class="mesa d-grid grid-cols-2 justify-content-start align-items-center w-100 vh-100">
+        <div class="vw-100 h-100 d-flex flex-row justify-content-start align-items-center">
+            <button class="btn btn-primary position-absolute top-50 bottom-50 border-circle" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">icon</button>
+            
+            <div class="h-100 lateral col-lg-auto d-flex flex-column justify-content-center align-items-center ">
+                <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+                    <div class="perfil d-flex flex-row justify-content-center align-items-center">
+                            <a href="\perfil" class="text-decoration-none text-dark d-flex flex-row justify-content-center align-items-center">
+                                <img src="/static/img/perfil.png" alt="foto" class="img-fluid position-absolute start-0">
+                                <h5 class="offcanvas-title">{{ username }}</h5>
+                            </a>
+                            <button type="button" class="btn-close position-absolute end-0" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                    
+                    <div class="offcanvas-body">
+                        <a href="\dados">
+                            <div class="dados">Dados</div>
+                        </a>
+
+                        <div class="creditos"><a href="">Créditos</a></div>
+
+                        <div class="log_out"><a href="\">Sair</a></div>
+                    </div>
+                </div>
             </div>
-            <div class="container-sm d-flex flex-column justify-content-center align-items-center adicionar">
-            </div>
-            <div class="container-sm d-flex flex-column justify-content-center align-items-center adicionar">
+            <div class="col-lg-8 container-fluid d-flex flex-row justify-content-end align-items-center personagens w-60 gap-3 h-100">
+                <div class="container-sm d-flex flex-column justify-content-center align-items-center adicionar persona">
+                    a
+                </div>
+                <div class="container-sm d-flex flex-column justify-content-center align-items-center adicionar persona">
+                    v
+                </div>
+                <div class="container-sm d-flex flex-column justify-content-center align-items-center adicionar persona">
+                    c
+                </div>
             </div>
         </div>
     </div>
