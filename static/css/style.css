@@ -204,13 +204,43 @@ body {
   min-width: 95px;
 }
 
+.off-btn {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  background: none;
+  border: none;
+
+  left: 20px;
+}
+
+.btn-close, .offcanvas-title, .img-perfil {
+  top: 50px
+}
+.img-perfil {
+  left: 30%;
+}
+
 .lateral_content {
+  background: none;
   background-image: url('/static/img/lateral.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  
 
   max-width: 450px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .offcanvas-body {
+    margin-top: 50%;
+    .log_out, .creditos, .dados {
+      margin: 70px 0;
+    } 
+  }
 }
 
 .persona {
@@ -222,3 +252,4 @@ body {
   height: 35%;
   width: 50%;
 }
+

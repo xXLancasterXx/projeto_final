@@ -16,14 +16,16 @@
 {% block content %}
     <div class="mesa d-grid grid-cols-2 justify-content-start align-items-center w-100 vh-100">
         <div class="vw-100 h-100 d-flex flex-row justify-content-start align-items-center">
-            <button class="btn btn-primary position-absolute top-50 bottom-50 border-circle" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">icon</button>
+            <button class="position-absolute top-50 bottom-50 off-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"/>
+</svg></button>
             
             <div class="h-100 lateral col-lg-auto d-flex flex-column justify-content-center align-items-center ">
-                <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+                <div class="offcanvas offcanvas-start lateral_content" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
                     <div class="perfil d-flex flex-row justify-content-center align-items-center">
                             <a href="\perfil" class="text-decoration-none text-dark d-flex flex-row justify-content-center align-items-center">
-                                <img src="/static/img/perfil.png" alt="foto" class="img-fluid position-absolute start-0">
-                                <h5 class="offcanvas-title">{{ username }}</h5>
+                                <img src="/static/img/perfil.png" alt="foto" class="img-fluid position-absolute img-perfil">
+                                <h5 class="offcanvas-title position-absolute start-50 end-50">{{ username }}</h5>
                             </a>
                             <button type="button" class="btn-close position-absolute end-0" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
@@ -33,22 +35,23 @@
                             <div class="dados">Dados</div>
                         </a>
 
-                        <div class="creditos"><a href="">Créditos</a></div>
+                        <div class="creditos"><a href="{{ url_for('criar_ficha') }}" class="btn btn-success position-absolute bottom-0 start-0 m-3">+ Criar Ficha</a></div>
 
                         <div class="log_out"><a href="\">Sair</a></div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-8 container-fluid d-flex flex-row justify-content-end align-items-center personagens w-60 gap-3 h-100">
-                <div class="container-sm d-flex flex-column justify-content-center align-items-center adicionar persona">
-                    a
-                </div>
-                <div class="container-sm d-flex flex-column justify-content-center align-items-center adicionar persona">
-                    v
-                </div>
-                <div class="container-sm d-flex flex-column justify-content-center align-items-center adicionar persona">
-                    c
-                </div>
+                {% for ficha in fichas %}
+                    <a href="{{ url_for('ficha', id=ficha.id) }}" class="text-decoration-none text-dark">
+                    <div class="container-sm d-flex flex-column justify-content-center align-items-center adicionar persona">
+                        <img src="{{ url_for('static', filename='img/pergaminho.png') }}" class="img-fluid" style="max-height: 180px;">
+                        <span style="position: absolute; font-size: 24px; font-weight: bold;">
+                            {{ ficha.personagem[0]|upper }}
+                        </span>
+                    </div>
+                    </a>
+                {% endfor %}
             </div>
         </div>
     </div>

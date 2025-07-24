@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Ficha de {{ ficha.personagem }}{% endblock %}
+{% block nav %}
+{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <h1>{{ ficha.personagem }}</h1>
+    <ul>
+        <li><strong>Classe:</strong> {{ ficha.classe }}</li>
+        <li><strong>Raça:</strong> {{ ficha.raca }}</li>
+        <li><strong>Nível:</strong> {{ ficha.nivel }}</li>
+        <li><strong>Força:</strong> {{ ficha.forca }}</li>
+        <li><strong>Destreza:</strong> {{ ficha.destreza }}</li>
+        <li><strong>Constituição:</strong> {{ ficha.constituicao }}</li>
+        <li><strong>Inteligência:</strong> {{ ficha.inteligencia }}</li>
+    </ul>
+    <a href="{{ url_for('home') }}">← Voltar</a>
+</div>
+{% endblock %}

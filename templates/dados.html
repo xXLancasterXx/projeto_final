@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Dados{% endblock %}
+{% block nav %}
+{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <label for="quantidade">Quantidade de dados:</label>
+    <input type="number" id="quantidade" value="{{ quantidade }}" min="1" max="10" class="form-control mb-3" name="quantidade">
+    <label for="tipo_dado">Tipo de dado</label>
+    <select id="tipo_dado" class="form-control mb-3" name="tipo_dado">
+        <option value="4">D-4</option>
+        <option value="6">D-6</option>
+        <option value="8">D-8</option>
+        <option value="10">D-10</option>
+        <option value="12">D-12</option>
+        <option value="16">D-16</option>
+        <option value="20">D-20</option>
+        <option value="100">D-100</option>
+    </select>
+    <button class="btn btn-primary mb-3" onclick="rolarDados()">Rolar Dados</button>
+
+    <div id="resultado" class="alert alert-secondary" style="display: none;"></div>
+</div>
+{% endblock %}
+{% block script %}
+<script>
+    function rolarDados() {
+        const qtd = parseInt(document.getElementById('quantidade').value);
+        const faces = parseInt(document.getElementById('tipo_dado').value);
+        let resultados = [];
+
+        for (let i = 0; i < qtd; i++) {
+            let resultado = Math.floor(Math.random() * faces) + 1;
+            resultados.push(resultado);
+        }
+
+        const divResultado = document.getElementById('resultado');
+        divResultado.style.display = 'block';
+        divResultado.innerHTML = `<strong>Resultado:</strong> ${resultados.join(', ')}`;
+    }
+</script>
+{% endblock %}

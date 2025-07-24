@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Criar Ficha{% endblock %}
+{% block nav %}
+{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Criar nova ficha</h2>
+    <form method="POST">
+        <div class="mb-3">
+            <label>Nome do Personagem</label>
+            <input type="text" name="personagem" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label>Classe</label>
+            <input type="text" name="classe" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label>Raça</label>
+            <input type="text" name="raca" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label>Nível</label>
+            <input type="number" name="nivel" class="form-control" value="1" min="1" required>
+        </div>
+        <div class="mb-3">
+            <label>Força</label>
+            <input type="number" name="forca" class="form-control" value="10" min="1" required>
+        </div>
+        <div class="mb-3">
+            <label>Destreza</label>
+            <input type="number" name="destreza" class="form-control" value="10" min="1" required>
+        </div>
+        <div class="mb-3">
+            <label>Constituição</label>
+            <input type="number" name="constituicao" class="form-control" value="10" min="1" required>
+        </div>
+        <div class="mb-3">
+            <label>Inteligência</label>
+            <input type="number" name="inteligencia" class="form-control" value="10" min="1" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Criar Ficha</button>
+    </form>
+</div>
+{% endblock %}
