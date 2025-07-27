@@ -111,7 +111,36 @@ def ficha(id):
     ficha = Fichas.query.get_or_404(id)
     return render_template('ficha.html', ficha=ficha)
 
+@app.route('/editar_ficha/<int:id>', methods=['POST'])
+def editar_ficha(id):
+    ficha = Fichas.query.get_or_404(id)
+    
+    if request.method == 'POST':
+        ficha.classe = request.form['classe']
+        ficha.nivel = int(request.form['nivel'])
+        ficha.raca = request.form['raca']
+        ficha.forca = int(request.form['forca'])
+        ficha.destreza = int(request.form['destreza'])
+        ficha.constituicao = int(request.form['constituicao'])
+        ficha.inteligencia = int(request.form['inteligencia'])
 
+        db.session.commit()
+        flash("Ficha editada com sucesso!")
+        return redirect(f'/ficha/{id}')
+
+    return render_template('editar_ficha.html', ficha=ficha)
+
+@app.route('/excluir_ficha/<int:id>', methods=['POST'])
+def excluir_ficha(id):
+    ficha = Fichas.query.get_or_404(id)
+    
+    if request.method == 'POST':
+        db.session.delete(ficha)
+        db.session.commit()
+        flash("Ficha excluída com sucesso!")
+        return redirect('/home')
+
+    return render_template('excluir_ficha.html', ficha=ficha)
 
 @app.route('/dados')
 def dados():

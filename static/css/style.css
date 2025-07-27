@@ -253,3 +253,18 @@ body {
   width: 50%;
 }
 
+
+
+.edit-ficha {
+  display: none;
+}
+
+.edit-classe,
+  .edit-raca,
+  .edit-nivel,
+  .edit-forca,
+  .edit-destreza,
+  .edit-constituicao,
+  .edit-inteligencia {
+    display: none;
+  }

@@ -14,6 +14,82 @@
         <li><strong>Constituição:</strong> {{ ficha.constituicao }}</li>
         <li><strong>Inteligência:</strong> {{ ficha.inteligencia }}</li>
     </ul>
+    <button class="edit-link btn btn-primary" >Editar Ficha</button>
+    <form action="{{ url_for('excluir_ficha', id=ficha.id) }}" method="post" style="display:inline;">
+        <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir esta ficha?');">Excluir Ficha</button>
+    </form>
+    <div class="container-lg  edit-ficha">
+        <form action="{{ url_for('editar_ficha', id=ficha.id) }}" class="edit-form" method="post">
+            <div><input type="checkbox" class="form-check-input classe-edit">Classe</div>
+            <div class="mb-3  edit-classe">
+                <label for="classe" class="form-label">Classe</label>
+                <input type="text" class="form-control" id="classe" name="classe" value="{{ ficha.classe }}">
+            </div>
+            <div><input type="checkbox" class="form-check-input raca-edit">Raça</div>
+            <div class="mb-3  edit-raca">
+                <label for="raca" class="form-label">Raça</label>
+                <input type="text" class="form-control" id="raca" name="raca" value="{{ ficha.raca }}">
+            </div>
+            <div><input type="checkbox" class="form-check-input nivel-edit">Nível</div>
+            <div class="mb-3  edit-nivel">
+                <label for="nivel" class="form-label">Nível</label>
+                <input type="number" class="form-control" id="nivel" name="nivel" value="{{ ficha.nivel }}">
+            </div>
+            <div><input type="checkbox" class="form-check-input forca-edit">Força</div>
+            <div class="mb-3  edit-forca">
+                <label for="forca" class="form-label">Força</label>
+                <input type="number" class="form-control" id="forca" name="forca" value="{{ ficha.forca }}">
+            </div>
+            <div><input type="checkbox" class="form-check-input destreza-edit">Destreza</div>
+            <div class="mb-3  edit-destreza">
+                <label for="destreza" class="form-label">Destreza</label>
+                <input type="number" class="form-control" id="destreza" name="destreza" value="{{ ficha.destreza }}">
+            </div>
+            <div><input type="checkbox" class="form-check-input constituicao-edit">Constituição</div>
+            <div class="mb-3  edit-constituicao">
+                <label for="constituicao" class="form-label">Constituição</label>
+                <input type="number" class="form-control" id="constituicao" name="constituicao" value="{{ ficha.constituicao }}">
+            </div>
+            <div><input type="checkbox" class="form-check-input inteligencia-edit">Inteligência</div>
+            <div class="mb-3  edit-inteligencia">
+                <label for="inteligencia" class="form-label">Inteligência</label>
+                <input type="number" class="form-control" id="inteligencia" name="inteligencia" value="{{ ficha.inteligencia }}">
+            </div>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        </form>
+    </div>
     <a href="{{ url_for('home') }}">← Voltar</a>
 </div>
+{% endblock %}
+
+{% block script %}
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const editLink = document.querySelector(".edit-link");
+    const editForm = document.querySelector(".edit-ficha");
+
+    // Começa oculto
+    editForm.style.display = "none";
+
+    // Toggle geral do formulário
+    editLink.addEventListener("click", function() {
+        editForm.style.display = editForm.style.display === "none" ? "block" : "none";
+    });
+
+    // Checkbox → mostra/esconde campo específico
+    const checkboxes = document.querySelectorAll(".form-check-input");
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener("change", function() {
+            // Pegamos a classe como "forca-edit", "nivel-edit", etc.
+            const className = Array.from(this.classList).find(cls => cls.endsWith('-edit'));
+            const atributo = className.replace('-edit', ''); // ex: "forca"
+            const campo = document.querySelector(`.edit-${atributo}`); // ex: .edit-forca
+
+            if (campo) {
+                campo.style.display = this.checked ? "block" : "none";
+            }
+        });
+    });
+});
+</script>
 {% endblock %}
