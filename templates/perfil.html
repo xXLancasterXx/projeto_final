@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}Perfil{% endblock %}
+
+{% block nav %}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Perfil de {{ nome }}</h1>
+    <ul>
+        <li><strong>Nome:</strong> {{ nome }}</li>
+        >
+    </ul>
+    <button id="editarPerfilBtn" class="btn btn-primary">Editar Perfil</button>
+    <a href="{{ url_for('deletar_conta') }}" id="deletarContaBtn" class="btn btn-danger">Deletar Conta</a>
+    <a href="{{ url_for('home') }}" class="btn btn-secondary">Voltar</a>
+    <div id="block-edit">
+        <form action="{{ url_for('atualizar_perfil') }}" method="post">
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="nome" name="nome" value="{{ user.nome }}">
+            </div>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+            
+        </form>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Evento para o botão de deletar perfil
+            document.getElementById('deletarContaBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                if (confirm('Tem certeza que deseja deletar sua conta? Esta ação não pode ser desfeita.')) {
+                    window.location.href = this.href;
+                }
+            });
+
+            // Evento para o botão de editar perfil
+            document.getElementById('editarPerfilBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                const blockedit = document.getElementById('block-edit');
+                blockedit.style.display = blockedit.style.display === 'none' ? 'block' : 'none';
+            });
+        });
+    </script>
+{% endblock %}

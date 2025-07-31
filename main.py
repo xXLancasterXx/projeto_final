@@ -42,8 +42,10 @@ def login():
 
 @app.route('/home')
 def home():
+    user = Usuario.query.get(session.get('user_id'))
     fichas = Fichas.query.filter_by(dono=session.get('user_id')).all()
-    return render_template('index.html', fichas=fichas)
+    nome = user.userName
+    return render_template('index.html', fichas=fichas, nome=nome)
 
 @app.route('/registro')
 def registro():
@@ -98,7 +100,8 @@ def criar_ficha():
 
         # Atribuir dono se você usa autenticação
         nova_ficha.dono = session.get('user_id')  # ou o id do usuário logado
-
+        user = Usuario.query.get(nova_ficha.dono)
+        nome = user.userName
         db.session.add(nova_ficha)
         db.session.commit()
         flash("Ficha criada com sucesso!")
@@ -133,6 +136,8 @@ def editar_ficha(id):
 @app.route('/excluir_ficha/<int:id>', methods=['POST'])
 def excluir_ficha(id):
     ficha = Fichas.query.get_or_404(id)
+    user = Usuario.query.get_or_404(session.get('user_id'))
+    nome = user.userName
     
     if request.method == 'POST':
         db.session.delete(ficha)
@@ -147,29 +152,35 @@ def dados():
     return render_template('dados.html')
 
 
+@app.route('/perfil')
+def perfil():
+    user = Usuario.query.get_or_404(session.get('user_id'))
+    nome = user.userName
 
+    return render_template('perfil.html', nome=nome, user=user)
 
+@app.route('/atualizar_perfil', methods=['POST'])
+def atualizar_perfil():
+    user = Usuario.query.get_or_404(session.get('user_id'))
+    if not user:
+        flash("Usuário não encontrado.")
+        return redirect('/perfil')
 
-###############################################
-@app.route('/sobre')
-def sobre():
-    return render_template('sobre.html')
+    user.userName = request.form.get('nome')
+    db.session.commit()
+    flash("Perfil atualizado com sucesso!")
+    return redirect('/perfil')
 
-@app.route('/projetos')
-def projetos():
-    return render_template('projetos.html')
-
-@app.route('/contato', methods=['GET', 'POST'])
-def contato():
-    if request.method == 'POST':
-        nome = request.form.get('nome')
-        email = request.form.get('email')
-        mensagem = request.form.get('mensagem')
-        
-        return render_template('contato.html', nome=nome, email=email, mensagem=mensagem)
-    return render_template('contato.html')
-
-
-
+@app.route('/deletar_conta')
+def deletar_conta():
+    user = Usuario.query.get_or_404(session.get('user_id'))
+    if not user:
+        flash("Usuário não encontrado.")
+        return redirect('/perfil')
+    db.session.delete(user)
+    db.session.commit()
+    flash("Conta deletada com sucesso!")
+    session.pop('user_id', None)
+    return redirect('/')
 if __name__ == '__main__':
     app.run(debug=True, port=5000)

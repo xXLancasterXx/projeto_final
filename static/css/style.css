@@ -265,6 +265,7 @@ body {
   .edit-forca,
   .edit-destreza,
   .edit-constituicao,
-  .edit-inteligencia {
+  .edit-inteligencia,
+  #block-edit {
     display: none;
   }
